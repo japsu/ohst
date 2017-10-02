@@ -31,7 +31,12 @@ except ImportError:
     from urlparse import urlparse
 
 
-HOST_BINARY = '/usr/bin/host'
+COMMANDS = dict(
+    host='/usr/bin/host',
+    ohst='/usr/bin/host',
+    whois='/usr/bin/whois',
+    owhis='/usr/bin/whois',
+)
 
 
 def mangle_arg(arg):
@@ -43,9 +48,10 @@ def mangle_arg(arg):
 
 
 def main(args):
-    os.execv(HOST_BINARY, [HOST_BINARY] + [mangle_arg(arg) for arg in args])
+    cmd = COMMANDS[os.path.splitext(os.path.basename(args.pop(0)))[0]]
+    os.execv(cmd, [cmd] + [mangle_arg(arg) for arg in args])
 
 
 if __name__ == '__main__':
     from sys import argv
-    main(argv[1:])
+    main(argv)

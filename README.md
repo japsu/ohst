@@ -2,26 +2,33 @@
 
 Have you ever pasted something from eg. the browser address bar to `host` just to get this?
 
-    $ host https://google.com
-    Host https://google.com not found: 3(NXDOMAIN)
+    $ host https://github.com/japsu/ohst
+    Host https://github.com/japsu/ohst not found: 3(NXDOMAIN)
 
 Enter `ohst`, a thin wrapper around `host` that turns URLs into hostnames!
 
-    $ ohst https://google.com
-    google.com has address 172.217.22.174
+    $ ohst https://github.com/japsu/ohst
+    github.com has address 192.30.253.112
 
 All parameters that are not understood by `urllib.parse` are passed verbatim:
 
-    $ ohst -t TXT https://google.com
-    google.com descriptive text "v=spf1 include:_spf.google.com ~all"
+    $ ohst -t MX https://github.com/japsu/ohst
+    github.com mail is handled by 5 alt2.aspmx.l.google.com.
+
+Also supports `whois`:
+
+    $ owhis https://github.com/japsu/ohst
 
 ## Installation
 
     # symlink
-    ln -sf $PWD/ohst.py /usr/local/bin
+    ln -sf $PWD/ohst.py /usr/local/bin/ohst
+    ln -sf $PWD/ohst.py /usr/local/bin/owhis
 
     # or copy
-    install -m 755 ohst.py /usr/local/bin
+    install -m 755 ohst.py /usr/local/bin/ohst
+    install -m 755 ohst.py /usr/local/bin/owhis
+
 
 ## License
 
