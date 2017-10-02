@@ -29,7 +29,6 @@ Also supports `whois`:
     install -m 755 ohst.py /usr/local/bin/ohst
     install -m 755 ohst.py /usr/local/bin/owhis
 
-
 ## License
 
     The MIT License (MIT)
