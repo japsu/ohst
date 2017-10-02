@@ -23,7 +23,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import subprocess
+import os
 
 try:
     from urllib.parse import urlparse
@@ -43,7 +43,7 @@ def mangle_arg(arg):
 
 
 def main(args):
-    subprocess.call([HOST_BINARY] + [mangle_arg(arg) for arg in args])
+    os.execv(HOST_BINARY, [HOST_BINARY] + [mangle_arg(arg) for arg in args])
 
 
 if __name__ == '__main__':
